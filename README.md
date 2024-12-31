@@ -14,8 +14,15 @@ TODO: here will put images and videos
 ![Alt text](/screenshots/flame-tongue.PNG?raw=true "flame-tongue")
 
 # Getting started
-TODO: here will put the necessary actions for getting compiled and to run, or maybe run in browser instead?
-
+This project depends on OpenCV 3.x.x, currently using 3.4.8 but anything else works, previously was 3.1.0
+Normally building all with MinGW x64, also works with MinGW x86, VS probably works don't remember if I tried or not.
+You can get prebuilt OpenCV libraries with MinGW here:
+https://github.com/huihut/OpenCV-MinGW-Build?tab=readme-ov-file
+Steps to do:
+-Download/clone OpenCV and put some place
+-Begin building "Generator" subproject
+  -On Generator.pro put the correct include/libs, in my case I didn't put include/lib paths since I had set system-wide variables of MinGW for include/libs, CPLUS_INCLUDE_PATH     and LIBRARY_PATH
+  -Put the OpenCV dlls on program folder after building or put the path into PATH
 # Documentation/Wiki
 TODO: put external links to algorithms and strategies used for implementation, and my own tricks too!
 
