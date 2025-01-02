@@ -9,6 +9,7 @@
 #include "qtutils.h"
 #include "Simulation/Descriptor/Effect/all_effect_descriptions.h"
 #include <QApplication>
+#include "Section.h"
 
 SimulationWindow::SimulationWindow(const QSize& size, SimulationDescription* desc, QWidget *parent):
     QMainWindow(parent),
@@ -22,7 +23,7 @@ SimulationWindow::SimulationWindow(const QSize& size, SimulationDescription* des
     createObjects();
     manageLayout();
     createConnections();
-    initProperties();
+//    initProperties();
     resetToDefault();
     /*
     effectVector = QVector<EffectDescription*> (2);
@@ -44,17 +45,21 @@ void SimulationWindow::createObjects() {
     mButtonLayout = new QVBoxLayout();
     mImageLayout = new QVBoxLayout();
 
-    mMenuCombo = new QComboBox();
+//    mMenuCombo = new QComboBox();
 
 
-
-    mColorLayoutWidget = new QWidget();
-    mIntLayoutWidget = new QWidget();
-    mDoubleLayoutWidget = new QWidget();
-    mRadioLayoutWidget = new QWidget();
-    mEffectLayoutWidget = new QWidget();
-    mHelperLayoutWidget = new QWidget();
-
+//    mColorLayoutWidget = new QWidget();
+//    mIntLayoutWidget = new QWidget();
+//    mDoubleLayoutWidget = new QWidget();
+//    mRadioLayoutWidget = new QWidget();
+//    mEffectLayoutWidget = new QWidget();
+//    mHelperLayoutWidget = new QWidget();
+    mColorLayoutWidget = new ui::Section("Color buttons");
+    mIntLayoutWidget = new ui::Section("Integer buttons");
+    mDoubleLayoutWidget = new ui::Section("Decimal buttons");
+    mRadioLayoutWidget = new ui::Section("Selection buttons");
+    mEffectLayoutWidget = new ui::Section("Effect buttons");
+    mHelperLayoutWidget = new ui::Section("Helper buttons");
 
     mColorLayout = new QVBoxLayout();
     mIntLayout = new QVBoxLayout();
@@ -81,7 +86,7 @@ void SimulationWindow::createObjects() {
     std::vector <ColorDescription> colorDesc = mDesc->getColorDesc();
     mColorButtons = QVector<ColorButton*> (colorDesc.size());
     for (int i = 0; i < mColorButtons.size(); ++i) {
-        mColorButtons[i] = new ColorButton (&colorDesc[i], i, this);
+        mColorButtons[i] = new ColorButton (&colorDesc[i], i, mColorLayoutWidget);
     }
     std::vector <IntDescription> intDesc = mDesc->getIntDesc();
     mIntButtons = QVector <IntButton*>(intDesc.size());
@@ -121,7 +126,7 @@ void SimulationWindow::manageLayout() {
 
     mImageLayout->addWidget(mFrameView);
 
-    mButtonLayout->addWidget(mMenuCombo);
+//    mButtonLayout->addWidget(mMenuCombo);
     mButtonLayout->addWidget(mColorLayoutWidget);
     mButtonLayout->addWidget(mIntLayoutWidget);
     mButtonLayout->addWidget(mDoubleLayoutWidget);
@@ -129,21 +134,12 @@ void SimulationWindow::manageLayout() {
     mButtonLayout->addWidget(mEffectLayoutWidget);
     mButtonLayout->addWidget(mHelperLayoutWidget);
 
-    mColorLayoutWidget->setLayout(mColorLayout);
-    mIntLayoutWidget->setLayout(mIntLayout);
-    mDoubleLayoutWidget->setLayout(mDoubleLayout);
-    mRadioLayoutWidget->setLayout(mRadioLayout);
-    mEffectLayoutWidget->setLayout(mEffectLayout);
-    mHelperLayoutWidget->setLayout(mHelperLayout);
-
     mHelperLayout->addWidget(mSaveButton);
     mHelperLayout->addWidget(mPauseButton);
     mHelperLayout->addWidget(mResumeButton);
     mHelperLayout->addWidget(mRestartButton);
     mHelperLayout->addWidget(mSetDefaultButton);
     mHelperLayout->addWidget(mDelayButton);
-
-
 
     //std::vector <ColorDescription> colorDesc = mDesc->getColorDesc();
     for (int i = 0; i < mColorButtons.size(); ++i) {
@@ -176,7 +172,27 @@ void SimulationWindow::manageLayout() {
     for (int i = 0; i < mEffectAddButtons.size(); ++i) {
         mEffectAddLayout->addWidget(mEffectAddButtons[i]);
     }
+    if (mColorButtons.empty()) {
+        mColorLayoutWidget->setVisible(false);
+    }
+    if (mIntButtons.empty()) {
+        mIntLayoutWidget->setVisible(false);
+    }
+    if (mDoubleButtons.empty()) {
+        mDoubleLayoutWidget->setVisible(false);
+    }
+    if (mRadioButtons.empty()) {
+        mRadioLayoutWidget->setVisible(false);
+    }
+    mEffectLayoutWidget->setVisible(false);
 
+    mColorLayoutWidget->setContentLayout(*mColorLayout);
+    mIntLayoutWidget->setContentLayout(*mIntLayout);
+    mDoubleLayoutWidget->setContentLayout(*mDoubleLayout);
+    mRadioLayoutWidget->setContentLayout(*mRadioLayout);
+    mEffectLayoutWidget->setContentLayout(*mEffectLayout);
+    mHelperLayoutWidget->setContentLayout(*mHelperLayout);
+    mHelperLayoutWidget->toggle(true);
     /*
     for (int i = 0; i < mEffectButtons.size(); ++i) {
         mEffectLayout->addWidget(mEffectButtons[i]);
@@ -222,10 +238,11 @@ enum SelectedOption {
 };
 
 void SimulationWindow::initProperties() {
-    mMenuStrings = QStringList();
-    for (int i = 0; i < 6; ++i) {
-        mMenuStrings.append(QString());
-    }
+//    mMenuStrings = QStringList();
+//    for (int i = 0; i < 6; ++i) {
+//        mMenuStrings.append(QString());
+//    }
+
     //mMenuStrings.reserve(4);
     /*
     mMenuStrings.append(QString("Color buttons"));
@@ -234,18 +251,19 @@ void SimulationWindow::initProperties() {
     mMenuStrings.append(QString("Radio buttons"));
     mMenuStrings.append(QString("Effect buttons"));
     */
-    mMenuStrings[eColor] = QString("Color buttons");
-    mMenuStrings[eInt] = QString("Integer buttons");
-    mMenuStrings[eDouble] = QString("Decimal buttons");
-    mMenuStrings[eRadio] = QString("Radio buttons");
-    mMenuStrings[eEffect] = QString("Effect buttons");
-    mMenuStrings[eHelper] = QString("Helper buttons");
+
+//    mMenuStrings[eColor] = QString("Color buttons");
+//    mMenuStrings[eInt] = QString("Integer buttons");
+//    mMenuStrings[eDouble] = QString("Decimal buttons");
+//    mMenuStrings[eRadio] = QString("Radio buttons");
+//    mMenuStrings[eEffect] = QString("Effect buttons");
+//    mMenuStrings[eHelper] = QString("Helper buttons");
 
 
-    mMenuCombo->addItems(mMenuStrings);
-    connect (mMenuCombo, SIGNAL(activated(int)), this, SLOT(changeDisplayOptions(int)));
-    mMenuCombo->setCurrentIndex(eHelper);
-    changeDisplayOptions(eHelper);
+//    mMenuCombo->addItems(mMenuStrings);
+//    connect (mMenuCombo, SIGNAL(activated(int)), this, SLOT(changeDisplayOptions(int)));
+//    mMenuCombo->setCurrentIndex(eHelper);
+//    changeDisplayOptions(eHelper);
 }
 
 
@@ -312,35 +330,35 @@ SimulationWindow::~SimulationWindow() {
 
 
 
-void SimulationWindow::changeDisplayOptions(int index) {
-    mIntLayoutWidget->setVisible(false);
-    mDoubleLayoutWidget->setVisible(false);
-    mColorLayoutWidget->setVisible(false);
-    mRadioLayoutWidget->setVisible(false);
-    mEffectLayoutWidget->setVisible(false);
-    mHelperLayoutWidget->setVisible(false);
+//void SimulationWindow::changeDisplayOptions(int index) {
+//    mIntLayoutWidget->setVisible(false);
+//    mDoubleLayoutWidget->setVisible(false);
+//    mColorLayoutWidget->setVisible(false);
+//    mRadioLayoutWidget->setVisible(false);
+//    mEffectLayoutWidget->setVisible(false);
+//    mHelperLayoutWidget->setVisible(false);
 
-    switch (index) {
-    case eInt:
-        mIntLayoutWidget->setVisible(true);
-        break;
-    case eDouble:
-        mDoubleLayoutWidget->setVisible(true);
-        break;
-    case eColor:
-        mColorLayoutWidget->setVisible(true);
-        break;
-    case eRadio:
-        mRadioLayoutWidget->setVisible(true);
-        break;
-    case eEffect:
-        mEffectLayoutWidget->setVisible(true);
-        break;
-    case eHelper:
-        mHelperLayoutWidget->setVisible(true);
-        break;
-    }
-}
+//    switch (index) {
+//    case eInt:
+//        mIntLayoutWidget->setVisible(true);
+//        break;
+//    case eDouble:
+//        mDoubleLayoutWidget->setVisible(true);
+//        break;
+//    case eColor:
+//        mColorLayoutWidget->setVisible(true);
+//        break;
+//    case eRadio:
+//        mRadioLayoutWidget->setVisible(true);
+//        break;
+//    case eEffect:
+//        mEffectLayoutWidget->setVisible(true);
+//        break;
+//    case eHelper:
+//        mHelperLayoutWidget->setVisible(true);
+//        break;
+//    }
+//}
 
 
 void SimulationWindow::changeColor (int index, const QColor &color) {
@@ -386,8 +404,6 @@ void SimulationWindow::changeEffectDouble (int index, double value){
 void SimulationWindow::changeEffectRadio (int index, int buttonIndex){
     mFrameProcessor->addEffectRadioEvent({index, buttonIndex});
 }
-
-
 
 
 void SimulationWindow::resetToDefault() {

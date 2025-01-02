@@ -48,6 +48,7 @@ LIBS += -lopencv_core348.dll -lopencv_imgproc348.dll -lopencv_highgui348.dll -lo
 FORMS    +=
 
 HEADERS += \
+    Section.h \
     Simulation/Descriptor/Effect/all_effect_descriptions.h \
     Simulation/Descriptor/Effect/contrast_description.h \
     Simulation/Descriptor/Effect/effect_description.h \
@@ -96,6 +97,7 @@ HEADERS += \
     simulationwindow.h
 
 SOURCES += \
+    Section.cpp \
     Simulation/Descriptor/Effect/all_effect_descriptions.cpp \
     Simulation/Descriptor/Effect/contrast_description.cpp \
     Simulation/Descriptor/Effect/effect_description.cpp \

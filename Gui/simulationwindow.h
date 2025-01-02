@@ -25,7 +25,7 @@
 #include "radiobutton.h"
 #include "pushbutton.h"
 #include "effectbutton.h"
-
+#include "Section.h"
 
 #include <QDebug>
 
@@ -66,7 +66,7 @@ public slots:
     void changeDelay(int, int value);
     void save();
 
-    void changeDisplayOptions(int val);
+//    void changeDisplayOptions(int val);
 private:
     void createObjects();
     void manageLayout();
@@ -85,8 +85,8 @@ private:
     QVBoxLayout* mButtonLayout;
     QVBoxLayout* mImageLayout;
 
-    QComboBox* mMenuCombo;
-    QStringList mMenuStrings;
+//    QComboBox* mMenuCombo;
+//    QStringList mMenuStrings;
 
     QVBoxLayout* mColorLayout;
     QVBoxLayout* mIntLayout;
@@ -95,12 +95,12 @@ private:
     QVBoxLayout* mEffectLayout;
     QVBoxLayout* mHelperLayout;
 
-    QWidget* mColorLayoutWidget;
-    QWidget* mIntLayoutWidget;
-    QWidget* mDoubleLayoutWidget;
-    QWidget* mRadioLayoutWidget;
-    QWidget* mEffectLayoutWidget;
-    QWidget* mHelperLayoutWidget;
+    ui::Section* mColorLayoutWidget;
+    ui::Section* mIntLayoutWidget;
+    ui::Section* mDoubleLayoutWidget;
+    ui::Section* mRadioLayoutWidget;
+    ui::Section* mEffectLayoutWidget;
+    ui::Section* mHelperLayoutWidget;
 
 
     QVBoxLayout* mEffectAddLayout;
