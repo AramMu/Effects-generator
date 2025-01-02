@@ -5,7 +5,6 @@ I usually focused on making flame-like and lightning-like effects, and also impl
 The description of this program is not well done yet, please provide me feedback and suggestions for improving it!
 
 # Demonstration
-TODO: here will put images and videos
 ![Alt text](/screenshots/DLA.PNG?raw=true "DLA")
 ![Alt text](/screenshots/forest-fire.PNG?raw=true "forest-fire")
 ![Alt text](/screenshots/main-window.PNG?raw=true "main-window")
