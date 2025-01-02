@@ -25,9 +25,11 @@ CONFIG += c++14
 INCLUDEPATH += $$PWD\Utils
 
 #if using MinGW
-INCLUDEPATH += $$PWD\Dependencies\opencv_3_1_mingw\include
-LIBS += -L$$PWD\Dependencies\opencv_3_1_mingw\lib
-LIBS += -lopencv_world310.dll
+#INCLUDEPATH += $$PWD\Dependencies\opencv_3_1_mingw\include
+#LIBS += -L$$PWD\Dependencies\opencv_3_1_mingw\lib
+#LIBS += -lopencv_world310.dll
+
+LIBS += -lopencv_core348.dll -lopencv_imgproc348.dll -lopencv_highgui348.dll -lopencv_imgcodecs348.dll
 
 #if using Visual studio
 #DEFINES += "NOMINMAX"

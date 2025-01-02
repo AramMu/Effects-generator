@@ -1,8 +1,9 @@
-TEMPLATE = app
-CONFIG += console c++14
+#TEMPLATE = app
 
-#TEMPLATE = lib
-#CONFIG += console c++14 dll
+TEMPLATE = lib
+CONFIG += dll
+
+CONFIG += console c++14
 
 CONFIG -= app_bundle
 CONFIG -= qt
@@ -10,8 +11,9 @@ CONFIG -= qt
 DEFINES += GENERATORS_LIBRARY
 
 INCLUDEPATH += Utils
-INCLUDEPATH += D:\\Dependencies\\opencv_3_1_0\\include
-LIBS += -LD:\\Dependencies\\opencv_3_1_0\\x86\\mingw\\lib -lopencv_world310.dll
+#INCLUDEPATH += D:\\Dependencies\\opencv_3_1_0\\include
+#LIBS += -LD:\\Dependencies\\opencv_3_1_0\\x86\\mingw\\lib -lopencv_world310.dll
+LIBS += -lopencv_core348.dll -lopencv_imgproc348.dll -lopencv_highgui348.dll -lopencv_imgcodecs348.dll
 
 HEADERS += \
     Simulation/Descriptor/Effect/all_effect_descriptions.h \
