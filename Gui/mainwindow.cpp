@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Main menu");
     mCentralLayout->addWidget(mByAramMuradyan);
 
-    mPluginPaths.append("Plugins/generators.dll");
+    mPluginPaths.append("generators.dll");
     QLibrary lib(mPluginPaths[0]);
     if (!lib.load()) {
         qDebug() << "Can't load plugin";
