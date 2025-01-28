@@ -5,12 +5,12 @@ I usually focused on making flame-like and lightning-like effects, and also impl
 The description of this program is not well done yet, please provide me feedback and suggestions for improving it!
 
 # Demonstration
-![Alt text](/screenshots/DLA.PNG?raw=true "DLA")
-![Alt text](/screenshots/forest-fire.PNG?raw=true "forest-fire")
-![Alt text](/screenshots/main-window.PNG?raw=true "main-window")
-![Alt text](/screenshots/flame-candle.PNG?raw=true "Flame candle")
-![Alt text](/screenshots/flame-candle-colorful.PNG?raw=true "flame-candle-colorful")
-![Alt text](/screenshots/flame-tongue.PNG?raw=true "flame-tongue")
+![DLA](/Media/screenshots/DLA.PNG?raw=true "DLA")
+![Forest fire](/Media/screenshots/forest-fire.PNG?raw=true "forest-fire")
+![Main window](/Media/screenshots/main-window.PNG?raw=true "main-window")
+![Flame candle](/Media/screenshots/flame-candle.PNG?raw=true "Flame candle")
+![Flame candle colorful](/Media/screenshots/flame-candle-colorful.PNG?raw=true "flame-candle-colorful")
+![Flame tongue](/Media/screenshots/flame-tongue.PNG?raw=true "flame-tongue")
 
 # Getting started
 This project depends on OpenCV 3.x.x, currently using 3.4.8 but anything else works, previously was 3.1.0\
